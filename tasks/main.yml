@@ -14,4 +14,4 @@
         repo: "deb http://repo.mysql.com/apt/ubuntu/ bionic mysql-5.7"
     - name: install mysql package with apt
       apt:
-        name: mysql-client
+        name: mysql-client=5.7
