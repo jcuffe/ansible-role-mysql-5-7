@@ -1,17 +1,14 @@
 ---
 - name: install legacy mysql 5.7 client from trusted private repository
   become: true
-  vars:
-    key_filename: mysql_pubkey.asc
-    apt_key_dir: /etc/apt/trusted.gpg.d
   block:
     - name: copy MIT signing key to trusted keys
       copy:
-        src: "{{ key_filename }}"
-        dest: "{{ apt_key_dir }}"
+        src: mysql_pubkey.asc
+        dest: /etc/apt/trusted.gpg.d
     - name: add mysql apt repo to sources
       apt_repository:
         repo: "deb http://repo.mysql.com/apt/ubuntu/ bionic mysql-5.7"
     - name: install mysql package with apt
       apt:
-        name: mysql-community
+        name: mysql-community-client=5.7.41-1ubuntu18.04
