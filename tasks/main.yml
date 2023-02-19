@@ -11,7 +11,7 @@
         dest: "{{ apt_key_dir }}"
     - name: add mysql apt repo to sources
       apt_repository:
-        repo: "deb [signed-by={{ apt_key_dir }}/{{ key_filename }}] http://repo.mysql.com/apt/ubuntu/ bionic mysql-5.7"
+        repo: "deb http://repo.mysql.com/apt/ubuntu/ bionic mysql-5.7"
     - name: install mysql package with apt
       apt:
         name: mysql-client
