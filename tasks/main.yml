@@ -4,7 +4,7 @@
   block:
     - name: add MIT signing key to keyring
       shell:
-        cmd: gpg --recv-keys 5072E1F5
+        cmd: gpg --keyserver pgp.mit.edu --recv-keys 5072E1F5
     - name: add mysql apt repo to sources
       apt_repository:
         repo: deb http://repo.mysql.com/apt/ubuntu/ bionic mysql-5.7
