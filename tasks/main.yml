@@ -4,7 +4,7 @@
   block:
     - name: copy MIT signing key to trusted keys
       copy:
-        file: mysql_pubkey.asc
+        src: mysql_pubkey.asc
         dest: /etc/apt/trusted.gpg.d/
     - name: add mysql apt repo to sources
       apt_repository:
