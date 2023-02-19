@@ -2,9 +2,10 @@
 - name: install legacy mysql 5.7 client from trusted private repository
   become: true
   block:
-    - name: add MIT signing key to keyring
-      shell:
-        cmd: gpg --keyserver pgp.mit.edu --recv-keys 5072E1F5
+    - name: copy MIT signing key to trusted keys
+      copy:
+        file: mysql_pubkey.asc
+        dest: /etc/apt/trusted.gpg.d/
     - name: add mysql apt repo to sources
       apt_repository:
         repo: deb http://repo.mysql.com/apt/ubuntu/ bionic mysql-5.7
