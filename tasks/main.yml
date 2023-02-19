@@ -3,9 +3,8 @@
   become: true
   block:
     - name: add MIT signing key to keyring
-      apt_key:
-        keyserver: pgp.mit.edu
-        id: 5072E1F5
+      shell:
+        cmd: gpg --recv-keys 5072E1F5
     - name: add mysql apt repo to sources
       apt_repository:
         repo: deb http://repo.mysql.com/apt/ubuntu/ bionic mysql-5.7
